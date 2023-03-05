@@ -1,38 +1,61 @@
+/* UNIVERSAL PALLETE
+--sky-blue: #82cfecff;
+--orange-web: #f9a620ff;
+--black-olive: #353531ff;
+--yellow-green: #84c318ff;
+--chili-red: #ef271bff; */
+
+/* * {
+  outline: 1px dashed red;
+} */
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #353531;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: flex-start;
+  justify-content: flex-start;
   color: white;
+  padding: 0;
 }
 
-.App-link {
-  color: #61dafb;
+.App-logo {
+  padding: 10px;
+  margin: 0;
+  height: 50px;
+  width: 50px;
+  fill: #82CFEC;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App-header h1 {
+  margin: auto 0;
+  padding: 0 50px;
+}
+
+.Gallery {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 20px 10px;
+}
+
+.Exhibit {
+  height: 100px;
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #353531;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px #353531;
+}
+
+.Exhibit svg {
+  width: 90px;
 }
