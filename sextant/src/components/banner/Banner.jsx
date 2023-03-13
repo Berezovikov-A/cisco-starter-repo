@@ -5,7 +5,7 @@ export default function Banner(props) {
 
     return (
         <header className="Banner">
-        <Logo className="Banner-logo" fill="blue" />
+        <Logo className="Banner-logo" />
         <h1 className='Banner-header'>{props.children}</h1>
       </header>
     )

@@ -1,7 +1,10 @@
+import useIpify from "../../hooks/useIpify";
 import "./Exhibit.css"
 import React, {useState, useContext, createContext} from "react"
+import { ReactComponent as Icon } from "./assets/computer-svgrepo-com.svg";
 
 const ToggleContext = createContext();
+
 
 export default function Exhibit({children, ...restProps}) {
     return (
@@ -11,14 +14,16 @@ export default function Exhibit({children, ...restProps}) {
     )
 }
 
-Exhibit.Item = function ExhibitItem({children, ...restProps}) {
+Exhibit.Item = function ExhibitItem({children, header, isDefault = true, ...restProps}) {
 
-    const [toggleVersion, setToggleVersion] = useState(true);
+    const [toggleVersion, setToggleVersion] = useState(isDefault);
+
 
     return (
         <ToggleContext.Provider value={{toggleVersion, setToggleVersion}}>
             <div className="Item" {...restProps}>
                 {children}
+                <Icon className="Icon" />
             </div>
         </ToggleContext.Provider>
     )
@@ -38,9 +43,12 @@ Exhibit.Switch = function ExhibitSwitch({children, ...restProps}) {
 
 Exhibit.Address = function ExhibitAddress({children, ...restProps}) {
     
-    const {toggleVersion} = useContext(ToggleContext);
+    const { toggleVersion } = useContext(ToggleContext);
+    const  [loading, data] = useIpify(toggleVersion);
 
     return (
-        <h2>IP: {toggleVersion ? "192.168.40.116" : "fe80::df0:3ca2:d7c4:6a5b%20"}</ h2>
+        <div className="Address" {...restProps}>
+            <h3>IP: {loading ? "Loading..." : data}</h3>
+        </div>
     )
 }
