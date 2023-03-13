@@ -1,0 +1,84 @@
+.Exhibit {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 20px 10px;
+  }
+  
+  .Item {
+    height: 200px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    background-color: #353531;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px #353531;
+  }
+  
+  .Icon {
+    width: 90px;
+  }
+
+  /* Switch style */
+  .Switch {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    color: #353531;
+    position: relative;
+    display: inline-block;
+    width: 70px;
+    height: 34px;
+}
+
+.Switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 6px;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f9a620ff;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+    box-shadow: inset 2px 2px 5px #353531ff;
+}
+
+.slider:before{
+    position: absolute;
+    content: "";
+    width: 35px;
+    height: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #353531ff;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 26px;
+    box-shadow: 1px 1px 3px #353531ff;
+}
+
+input:checked + .slider {
+    background-color: #82cfecff;
+    justify-content: flex-start;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}

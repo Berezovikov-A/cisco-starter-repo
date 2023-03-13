@@ -1,12 +1,19 @@
 import './App.css';
-import Banner from './Banner';
-import Exhibit from './Exhibit';
+import Exhibit from './components/exhibit/Exhibit';
+
+import Banner from './components/banner/Banner';
+
 
 function App() {
   return (
     <div className="App">
       <Banner>Sextant</Banner>
-      <Exhibit>162.198.1.1</Exhibit>
+      <Exhibit>
+        <Exhibit.Item>
+          <Exhibit.Switch />
+          <Exhibit.Address />
+        </Exhibit.Item>
+      </Exhibit>
     </div>
   );
 }
