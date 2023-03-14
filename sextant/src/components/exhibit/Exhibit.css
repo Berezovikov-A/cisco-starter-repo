@@ -27,7 +27,8 @@
     top: 5px;
     height: 50px;
     width: auto;
-    fill: #82cfecff;
+    /* fill: #82cfecff; */
+    color: aliceblue;
   }
 
 

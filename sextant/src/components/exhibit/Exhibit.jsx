@@ -1,7 +1,8 @@
 import useIpify from "../../hooks/useIpify";
+import useWebSocket from "../../hooks/useWebSocket";
 import "./Exhibit.css"
 import React, {useState, useContext, createContext} from "react"
-import { ReactComponent as Icon } from "./assets/computer-svgrepo-com.svg";
+// import { ReactComponent as Icon } from "./assets/computer-svgrepo-com.svg";
 
 const ToggleContext = createContext();
 
@@ -17,13 +18,14 @@ export default function Exhibit({children, ...restProps}) {
 Exhibit.Item = function ExhibitItem({children, header, isDefault = true, ...restProps}) {
 
     const [toggleVersion, setToggleVersion] = useState(isDefault);
+    const latency = useWebSocket("ws://localhost:55455")
 
 
     return (
         <ToggleContext.Provider value={{toggleVersion, setToggleVersion}}>
             <div className="Item" {...restProps}>
                 {children}
-                <Icon className="Icon" />
+                <p className="Icon">{latency}</p>
             </div>
         </ToggleContext.Provider>
     )
