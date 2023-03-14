@@ -11,8 +11,9 @@ function useIpify(toggleVersion) {
     };
 
     useEffect(() => {
+        const controller = new AbortController()
         setLoading(true);
-        fetch(url)
+        fetch(url, { signal: controller.signal })
             .then(response => response.json())
             .then(data => {
                 (!toggleVersion && data.ip.length <= 15) ? setData("Unavailable") : setData(data.ip);
@@ -20,6 +21,8 @@ function useIpify(toggleVersion) {
             .catch(() => {
                 setLoading(false);
                 setData("Loading Error!")
+            
+        return () => controller.abort();
             })
     }, [url, toggleVersion]);
 
