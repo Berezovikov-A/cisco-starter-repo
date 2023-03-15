@@ -10,13 +10,16 @@
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+  flex-wrap: wrap;
   gap: 15px;
   padding: 20px 10px;
+  margin: 0;
 }
   
 .Item {
   position: relative;
-  height: 100px;
+  height: 150px;
+  min-width: 320px;
   width: 400px;
   display: flex;
   justify-content: space-around;
@@ -29,7 +32,11 @@
   box-shadow: 1px 1px 5px var(--black-olive);
 }
 
-/* Switch style */
+.Address {
+  overflow-wrap: break-word;
+}
+
+/* Switch */
 .Switch {
   display: block;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -46,7 +53,7 @@
   height: 0;
 }
 
-.slider {
+.Switch .slider {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -64,7 +71,7 @@
   box-shadow: inset 2px 2px 5px var(--black-olive);
 }
 
-.slider:before{
+.Switch .slider:before{
   position: absolute;
   content: "";
   width: 35px;
@@ -78,12 +85,12 @@
   box-shadow: 1px 1px 3px var(--black-olive);
 }
 
-input:checked + .slider {
+.Switch input:checked + .slider {
   background-color: var(--sky-blue);
   justify-content: flex-start;
 }
 
-input:checked + .slider:before {
+.Switch input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
@@ -93,8 +100,8 @@ input:checked + .slider:before {
 
 .Gauge {
   position: absolute;
-  right: 10px;
-  top: 10px;
+  right: 5%;
+  top: 5%;
   height: 50px;
   width: 50px;
   background: var(--black-olive);

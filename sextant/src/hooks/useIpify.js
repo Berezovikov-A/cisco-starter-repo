@@ -16,7 +16,7 @@ function useIpify(toggleVersion) {
         fetch(url, { signal: controller.signal })
             .then(response => response.json())
             .then(data => {
-                (!toggleVersion && data.ip.length <= 15) ? setData("Unavailable") : setData(data.ip);
+                (!toggleVersion && data.ip.length <= 15) ? setData("v6 Is Unavailable") : setData(data.ip);
                 setLoading(false);})
             .catch(() => {
                 setLoading(false);

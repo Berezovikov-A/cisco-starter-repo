@@ -1,15 +1,6 @@
-/* UNIVERSAL PALLETE
---sky-blue: #82cfecff;
---orange-web: #f9a620ff;
---black-olive: #353531ff;
---yellow-green: #84c318ff;
---chili-red: #ef271bff; */
-
-/* * {
-  outline: 1px dashed red;
-} */
-
 .App {
   text-align: center;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  padding: 0;
+  margin: 0;
 }

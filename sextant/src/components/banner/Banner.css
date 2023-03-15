@@ -1,10 +1,19 @@
+:root {
+  --sky-blue: #82cfecff;
+  --orange-web: #f9a620ff;
+  --black-olive: #353531ff;
+  --yellow-green: #84c318ff;
+  --chili-red: #ef271bff;
+}
+
 .Banner {
-    background-color: #353531;
+    background-color: var(--black-olive);
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
     color: white;
     padding: 0;
+    margin: 0;
   }
   
   .Banner-logo {
@@ -12,7 +21,7 @@
     margin: 0;
     height: 50px;
     width: 50px;
-    fill: #82CFEC;
+    fill: var(--sky-blue);
   }
   
   .Banner-header {

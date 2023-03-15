@@ -48,7 +48,7 @@ Exhibit.Address = function ExhibitAddress({children, ...restProps}) {
 
     return (
         <div className="Address" {...restProps}>
-            <h3>IP: {loading ? "Loading..." : data}</h3>
+            <h3>{"IP: " + (loading ? "Loading..." : data)}</h3>
         </div>
     )
 }
