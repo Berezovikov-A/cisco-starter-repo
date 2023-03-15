@@ -11,10 +11,12 @@ function App() {
         <Exhibit.Item>
           <Exhibit.Switch />
           <Exhibit.Address />
+          <Exhibit.Gauge />
         </Exhibit.Item>
         <Exhibit.Item isDefault={false}>
           <Exhibit.Switch />
           <Exhibit.Address />
+          <Exhibit.Gauge />
         </Exhibit.Item>
       </Exhibit>
     </div>

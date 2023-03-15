@@ -1,93 +1,151 @@
+:root {
+  --sky-blue: #82cfecff;
+  --orange-web: #f9a620ff;
+  --black-olive: #353531ff;
+  --yellow-green: #84c318ff;
+  --chili-red: #ef271bff;
+}
+
 .Exhibit {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 15px;
-    padding: 20px 10px;
-  }
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 20px 10px;
+}
   
-  .Item {
-    position: relative;
-    height: 100px;
-    width: 400px;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    text-align: left;
-    background-color: #353531;
-    color: white;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 1px 1px 5px #353531;
-  }
-  
-  .Icon {
-    position: absolute;
-    right: 10px;
-    top: 5px;
-    height: 50px;
-    width: auto;
-    /* fill: #82cfecff; */
-    color: aliceblue;
-  }
+.Item {
+  position: relative;
+  height: 100px;
+  width: 400px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  text-align: left;
+  background-color: var(--black-olive);
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px var(--black-olive);
+}
 
-
-  /* Switch style */
-  .Switch {
-    display: block;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: bold;
-    color: #353531;
-    position: relative;
-    width: 70px;
-    height: 24px;
+/* Switch style */
+.Switch {
+  display: block;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  color: var(--black-olive);
+  position: relative;
+  width: 70px;
+  height: 24px;
 }
 
 .Switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 .slider {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 6px;
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #f9a620ff;
-    -webkit-transition: .4s;
-    transition: .4s;
-    border-radius: 24px;
-    box-shadow: inset 2px 2px 5px #353531ff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 6px;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--orange-web);
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 24px;
+  box-shadow: inset 2px 2px 5px var(--black-olive);
 }
 
 .slider:before{
-    position: absolute;
-    content: "";
-    width: 35px;
-    height: 16px;
-    left: 4px;
-    bottom: 4px;
-    background-color: #353531ff;
-    -webkit-transition: .4s;
-    transition: .4s;
-    border-radius: 16px;
-    box-shadow: 1px 1px 3px #353531ff;
+  position: absolute;
+  content: "";
+  width: 35px;
+  height: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: var(--black-olive);
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 16px;
+  box-shadow: 1px 1px 3px var(--black-olive);
 }
 
 input:checked + .slider {
-    background-color: #82cfecff;
-    justify-content: flex-start;
+  background-color: var(--sky-blue);
+  justify-content: flex-start;
 }
 
 input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Gauge */
+
+.Gauge {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  height: 50px;
+  width: 50px;
+  background: var(--black-olive);
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid white;
+  box-shadow: 1px 1px 3px var(--black-olive);
+}
+
+.Gauge .Bar {
+  position: absolute;
+  top: 50%;
+  height: 50%;
+  width: 100%;
+  background: var(--yellow-green);
+  transform-origin: top;
+  transition: 2ms;
+}
+
+.Gauge::after {
+  content: "";
+  position: absolute;
+  height: 50%;
+  width: 100%;
+  top: 49%;
+  background: var(--black-olive);
+  border: 5px solid var(--black-olive);
+}
+
+.Gauge::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 70%;
+  width: 70%;
+  background: var(--black-olive);
+  border-radius: 50%;
+  z-index: 300;
+}
+
+.Gauge .Value {
+  color: white;
+  z-index: 300;
+  font-size: 1em;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 50%;
+  width: 100%;
 }

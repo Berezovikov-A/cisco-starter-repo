@@ -2,7 +2,6 @@ import useIpify from "../../hooks/useIpify";
 import useWebSocket from "../../hooks/useWebSocket";
 import "./Exhibit.css"
 import React, {useState, useContext, createContext} from "react"
-// import { ReactComponent as Icon } from "./assets/computer-svgrepo-com.svg";
 
 const ToggleContext = createContext();
 
@@ -19,13 +18,13 @@ Exhibit.Item = function ExhibitItem({children, header, isDefault = true, ...rest
 
     const [toggleVersion, setToggleVersion] = useState(isDefault);
     const latency = useWebSocket("ws://localhost:55455")
+    const  [loading, data] = useIpify(toggleVersion);
 
 
     return (
-        <ToggleContext.Provider value={{toggleVersion, setToggleVersion}}>
+        <ToggleContext.Provider value={{toggleVersion, setToggleVersion, loading, data, latency}}>
             <div className="Item" {...restProps}>
                 {children}
-                <p className="Icon">{latency}</p>
             </div>
         </ToggleContext.Provider>
     )
@@ -45,12 +44,23 @@ Exhibit.Switch = function ExhibitSwitch({children, ...restProps}) {
 
 Exhibit.Address = function ExhibitAddress({children, ...restProps}) {
     
-    const { toggleVersion } = useContext(ToggleContext);
-    const  [loading, data] = useIpify(toggleVersion);
+    const { loading, data } = useContext(ToggleContext);
 
     return (
         <div className="Address" {...restProps}>
             <h3>IP: {loading ? "Loading..." : data}</h3>
+        </div>
+    )
+}
+
+Exhibit.Gauge = function ExhibitGauge({children, ...restProps}) {
+
+    const {latency} = useContext(ToggleContext);
+
+    return (
+        <div className="Gauge">
+            <div className="Bar" style={{transform:  `rotate(${(latency * 2.25) + 5}deg)`, background: `hsl(${82 - latency + 8}, 78%, 43%)`}}></div>
+            <p className="Value">{latency}ms</p>
         </div>
     )
 }

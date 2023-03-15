@@ -3,7 +3,7 @@ const W3CWebSocket = require("websocket").w3cwebsocket;
 
 function useWebSocket(url) {
 
-    const [latency, setLatency] = useState(null);
+    const [latency, setLatency] = useState(0);
 
     useEffect(() => {
 
@@ -19,13 +19,15 @@ function useWebSocket(url) {
     
         client.onclose = () => {
             console.log("Connection closed");
+            setLatency(0);
         };
     
        client.onmessage = (message) => {
             let serverTime = message.data.valueOf();
             let timeNow = new Date().getTime().valueOf();
             let latency =  timeNow - serverTime;
-            setLatency(latency.toString() + "ms");
+            setLatency(latency.toString());
+            console.log(`Latency: ${latency}ms`);
         };
 
     }, [url]);
@@ -33,6 +35,5 @@ function useWebSocket(url) {
     return latency;
 
 };
-
 
 export default useWebSocket;
