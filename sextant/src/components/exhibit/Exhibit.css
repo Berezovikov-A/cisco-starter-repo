@@ -19,17 +19,23 @@
 .Item {
   position: relative;
   height: 150px;
-  min-width: 320px;
-  width: 400px;
+  width: 305px;
+  min-width: 305px;
   display: flex;
   justify-content: space-around;
   flex-direction: column;
   text-align: left;
   background-color: var(--black-olive);
   color: white;
-  padding: 10px;
+  padding: 15px;
   border-radius: 10px;
   box-shadow: 1px 1px 5px var(--black-olive);
+}
+
+.Item .Header {
+  position: absolute;
+  top: 10px;
+  left: 60%;
 }
 
 .Address {
@@ -99,11 +105,9 @@
 /* Gauge */
 
 .Gauge {
-  position: absolute;
-  right: 5%;
-  top: 5%;
-  height: 50px;
-  width: 50px;
+  position: relative;
+  height: 100px;
+  width: 100px;
   background: var(--black-olive);
   border-radius: 50%;
   overflow: hidden;
@@ -147,7 +151,7 @@
 .Gauge .Value {
   color: white;
   z-index: 300;
-  font-size: 1em;
+  font-size: 1.5em;
   text-align: center;
   position: absolute;
   top: 50%;

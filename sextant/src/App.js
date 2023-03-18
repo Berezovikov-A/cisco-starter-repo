@@ -8,14 +8,11 @@ function App() {
     <div className="App">
       <Banner>Sextant</Banner>
       <Exhibit>
-        <Exhibit.Item>
+        <Exhibit.Item header="IP Address">
           <Exhibit.Switch />
           <Exhibit.Address />
-          <Exhibit.Gauge />
         </Exhibit.Item>
-        <Exhibit.Item isDefault={false}>
-          <Exhibit.Switch />
-          <Exhibit.Address />
+        <Exhibit.Item header={"Latency"}>
           <Exhibit.Gauge />
         </Exhibit.Item>
       </Exhibit>

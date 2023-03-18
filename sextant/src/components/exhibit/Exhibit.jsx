@@ -1,7 +1,11 @@
 import useIpify from "../../hooks/useIpify";
 import useWebSocket from "../../hooks/useWebSocket";
 import "./Exhibit.css"
-import React, {useState, useContext, createContext} from "react"
+import React, { 
+    useState, 
+    useContext, 
+    createContext 
+} from "react"
 
 const ToggleContext = createContext();
 
@@ -14,25 +18,24 @@ export default function Exhibit({children, ...restProps}) {
     )
 }
 
-Exhibit.Item = function ExhibitItem({children, header, isDefault = true, ...restProps}) {
+Exhibit.Item = function ExhibitItem({children, header, ...restProps}) {
 
-    const [toggleVersion, setToggleVersion] = useState(isDefault);
-    const latency = useWebSocket("ws://localhost:55455")
+    const [toggleVersion, setToggleVersion] = useState(true);
     const  [loading, data] = useIpify(toggleVersion);
 
-
     return (
-        <ToggleContext.Provider value={{toggleVersion, setToggleVersion, loading, data, latency}}>
+        <ToggleContext.Provider value={{toggleVersion, setToggleVersion, loading, data}}>
             <div className="Item" {...restProps}>
+                <h2 className="Header">{header}</h2>
                 {children}
             </div>
         </ToggleContext.Provider>
     )
 }
 
-Exhibit.Switch = function ExhibitSwitch({children, ...restProps}) {
+Exhibit.Switch = function ExhibitSwitch({ children, ...restProps }) {
     
-    const {toggleVersion, setToggleVersion} = useContext(ToggleContext);
+    const { toggleVersion, setToggleVersion } = useContext(ToggleContext);
 
     return (
         <label className="Switch">
@@ -55,11 +58,17 @@ Exhibit.Address = function ExhibitAddress({children, ...restProps}) {
 
 Exhibit.Gauge = function ExhibitGauge({children, ...restProps}) {
 
-    const {latency} = useContext(ToggleContext);
+    const latency = useWebSocket("ws://localhost:55455")
 
     return (
-        <div className="Gauge">
-            <div className="Bar" style={{transform:  `rotate(${(latency * 2.25) + 5}deg)`, background: `hsl(${82 - latency + 8}, 78%, 43%)`}}></div>
+        <div className="Gauge" {...restProps}>
+            <div 
+                className="Bar" 
+                style={{
+                    transform:  `rotate(${ latency <= 80 ? ((latency * 2.25) + 5) : 180 }deg)`, 
+                    background: `hsl(${ latency <= 80 ? (82 - latency + 8) : 10 }, 78%, 43%)`}}
+                >
+            </div>
             <p className="Value">{latency}ms</p>
         </div>
     )
